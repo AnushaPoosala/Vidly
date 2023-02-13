@@ -1,0 +1,43 @@
+﻿@model IEnumerable<vidly2.Models.Customer>
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2 style="font-size:30px">Customers</h2>
+
+@Html.ActionLink("New Customer", "New", "Customers", null, new { @class = "btn btn-primary" })
+
+<table class="table table-bordered table-hover">
+    @if (!Model.Any())
+    {
+        <tr>We dont have any Customers</tr>
+    }
+    else
+    {
+        <tr>
+            <th>Customer</th>
+            <th>Membership Type</th>
+        </tr>
+        foreach (var customer in Model)
+        {
+            <tr>
+                <td>
+                    <a href=/Customers/Edit/@customer.Id>@customer.Name</a>
+                </td>
+                <td>
+                    @customer.MembershipType.Name
+                </td>
+
+            </tr>
+        }
+    }
+
+</table>
+
+
+
+
+
+
+
